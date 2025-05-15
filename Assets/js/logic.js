@@ -2,14 +2,20 @@
 const toggleButton = document.getElementById('toggle');
 
 toggleButton.addEventListener('click', () => {
+  const root = document.documentElement;
+
   if (document.body.classList.contains('dark')) {
     document.body.classList.remove('dark');
     document.body.classList.add('light');
     toggleButton.textContent = '🌙';
+    root.style.setProperty('--circle-color', '#000');
+    localStorage.setItem('mode', 'light');
   } else {
     document.body.classList.remove('light');
     document.body.classList.add('dark');
     toggleButton.textContent = '☀️';
+    root.style.setProperty('--circle-color', '#fff');
+    localStorage.setItem('mode', 'dark');  
   }
 });
 
